@@ -1,12 +1,11 @@
 ﻿using Logic.Repositories;
-using Logic.Services;
 using Logic.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Api
+namespace Api.Utils
 {
     public class Startup
     {
@@ -25,17 +24,11 @@ namespace Api
             services.AddScoped<UnitOfWork>();
             services.AddTransient<MovieRepository>();
             services.AddTransient<CustomerRepository>();
-            services.AddTransient<MovieService>();
-            services.AddTransient<CustomerService>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
+            app.UseMiddleware<ExceptionHandler>();
             app.UseMvc();
         }
     }

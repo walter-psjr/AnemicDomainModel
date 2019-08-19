@@ -38,6 +38,7 @@ namespace Logic.Utils
                     .Conventions.Add<HiLoConvention>()
                 );
 
+            //new NHibernate.Tool.hbm2ddl.SchemaExport(configuration.BuildConfiguration()).Execute(false, true, false);
             return configuration.BuildSessionFactory();
         }
 

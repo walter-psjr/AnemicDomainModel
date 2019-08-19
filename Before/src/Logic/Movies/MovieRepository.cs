@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Logic.Entities;
+using Logic.Common;
+using Logic.Movies;
 using Logic.Utils;
 
 namespace Logic.Repositories
